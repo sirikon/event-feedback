@@ -2,7 +2,7 @@
 
 Node.js web application for collecting user's feedback in an event.
 
-Was used for [http://bilbostack.com/](BilboStack 2018) and [https://wecodefest.com/](WeCode 2018) (This explains all the information and style that is included right now).
+Was used for [BilboStack 2018](http://bilbostack.com/) and [WeCode 2018](https://wecodefest.com/) (This explains all the information and style that is included right now).
 
 **Needs some work for more reusability... I'm on it :)**
 
