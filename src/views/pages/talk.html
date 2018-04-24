@@ -1,0 +1,60 @@
+<div class="bsr-talk">
+
+    <% if (feedbackReceived) { %>
+        <div class="bsr-talk-success">
+            <% include ../partials/icons/check.html %>
+            <span>¡Gracias por tu feedback!</span>
+        </div>
+    <% } %>
+
+    <div class="bsr-talk-box">
+        <h2 class="bsr-talk-title"><%= talk.name %></h2>
+        <h3 class="bsr-talk-info">
+            <span class="bsr-talk-track">TRACK <%= talk.track %></span>
+            <span class="bsr-talk-when"><%= talk.when %></span>
+        </h3>
+        <p class="bsr-talk-description">
+            <%- talk.description %>
+        </p>
+    </div>
+
+    <div class="bsr-talk-speaker">
+        <% if (talk.speakerImage) { %>
+            <div class="bsr-talk-speaker-image" style="background-image: url(/static/speaker-images/<%= talk.speakerImage %>)"></div>
+        <% } %>
+        <div class="bsr-talk-speaker-info">
+            <span class="bsr-talk-speaker-name"><%= talk.speaker %></span>
+            <span class="bsr-talk-speaker-title"><%= talk.speakerTitle %></span>
+        </div>
+    </div>
+
+    <% if (!feedbackReceived) { %>
+        <div class="bsr-talk-box bsr-talk-feedback">
+            <h2 class="bsr-talk-feedback-title">Valora la charla</h2>
+
+            <form action="" method="POST">
+                <div class="bsr-talk-feedback-stars">
+                    <label for="rating-1"><% include ../partials/icons/star.html %></label><input type="radio" id="rating-1" name="rating" value="1">
+                    <label for="rating-2"><% include ../partials/icons/star.html %></label><input type="radio" id="rating-2" name="rating" value="2">
+                    <label for="rating-3"><% include ../partials/icons/star.html %></label><input type="radio" id="rating-3" name="rating" value="3" checked>
+                    <label for="rating-4"><% include ../partials/icons/star.html %></label><input type="radio" id="rating-4" name="rating" value="4">
+                    <label for="rating-5"><% include ../partials/icons/star.html %></label><input type="radio" id="rating-5" name="rating" value="5">
+                </div>
+        
+                <textarea class="bsr-talk-feedback-comment" name="comment" placeholder="Deja un comentario... si lo ves oportuno :)" maxlength="300"></textarea>
+        
+                <input class="bsr-talk-feedback-button" type="submit" value="Enviar">
+            </form>
+
+        </div>
+    <% } %>
+
+</div>
+
+<%- contentFor('head') %>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@wecodefest" />
+<meta name="twitter:title" content="Valora la charla de <%= talk.speaker %>" />
+<meta name="twitter:description" content="<%= talk.name %> - ¡Dame feedback!" />
+<meta name="twitter:image" content="https://feedback.wecodefest.com/static/speaker-images/<%= talk.speakerImage %>" />
+<title><%= talk.name %> - WeCodeFest Feedback</title>
