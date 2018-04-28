@@ -22,55 +22,28 @@
 
             <div class="bsr-talk-card-result-ratings">
                 <div class="bsr-talk-card-result-average">
-                    <%= talk._average %>
-                    <small>de media en <%= talk._feedbackCount %> valoraciones</small>
+                    <%= talk.summary.average %>
+                    <small>de media en <%= talk.summary.feedbackCount %> valoraciones</small>
                 </div>
-
-                <div class="bsr-talk-card-result-option">
-                    <span>5 stars</span>
-                    <div class="bsr-talk-card-result-option-bar">
-                        <div style="width: <%= talk._5starsPercent %>%"></div>
+                <% Object.keys(talk.summary.starCount)
+                    .map(n => new Object({ rating: n, count: talk.summary.starCount[n] }))
+                    .sort((a, b) => b.rating - a.rating)
+                    .forEach(({ rating, count }) => { %>
+                    <% var count = talk.summary.starCount[rating] %>
+                    <div class="bsr-talk-card-result-option">
+                        <span><%= rating %> stars</span>
+                        <div class="bsr-talk-card-result-option-bar">
+                            <div style="width: <%= (count / talk.summary.feedbackCount) * 100 %>%"></div>
+                        </div>
+                        <span><%= count %></span>
                     </div>
-                    <span><%= talk._5starsCount %></span>
-                </div>
-
-                <div class="bsr-talk-card-result-option">
-                    <span>4 stars</span>
-                    <div class="bsr-talk-card-result-option-bar">
-                            <div style="width: <%= talk._4starsPercent %>%"></div>
-                    </div>
-                    <span><%= talk._4starsCount %></span>
-                </div>
-
-                <div class="bsr-talk-card-result-option">
-                    <span>3 stars</span>
-                    <div class="bsr-talk-card-result-option-bar">
-                            <div style="width: <%= talk._3starsPercent %>%"></div>
-                    </div>
-                    <span><%= talk._3starsCount %></span>
-                </div>
-
-                <div class="bsr-talk-card-result-option">
-                    <span>2 stars</span>
-                    <div class="bsr-talk-card-result-option-bar">
-                            <div style="width: <%= talk._2starsPercent %>%"></div>
-                    </div>
-                    <span><%= talk._2starsCount %></span>
-                </div>
-
-                <div class="bsr-talk-card-result-option">
-                    <span>1 stars</span>
-                    <div class="bsr-talk-card-result-option-bar">
-                            <div style="width: <%= talk._1starsPercent %>%"></div>
-                    </div>
-                    <span><%= talk._1starsCount %></span>
-                </div>
+                <% }) %>
             </div>
 
             <div class="bsr-talk-card-result-comments">
-                <% talk._comments.forEach((comment) => { %>
+                <% talk.summary.comments.forEach((comment) => { %>
                     <div class="bsr-talk-card-result-comment">
-                        <%= comment %>
+                        [<%= comment.rating %> stars] <%= comment.text %>
                     </div>
                 <% }) %>
             </div>

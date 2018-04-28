@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
+    "test": "mocha",
     "migrate": "cd src/data && sequelize db:migrate",
     "start": "node index.js"
   },
@@ -31,5 +31,8 @@
     "sequelize": "^4.34.0",
     "sequelize-cli": "^4.0.0",
     "strip-ansi": "^4.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1"
   }
 }
