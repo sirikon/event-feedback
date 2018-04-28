@@ -202,7 +202,7 @@ const talks = {
         track: '2',
         when: 'SAB 15:30-17:30'
     },
-    'òs-bus-factor': {
+    'os-bus-factor': {
         name: 'Open Space: Bus factor',
         description: '',
         speaker: 'Miguel González',
@@ -285,7 +285,7 @@ const talks = {
         track: '1',
         when: 'SAB 19:00-20:00'
     }
-}
+};
 
 Object.keys(talks).forEach((k) => {
     talks[k].slug = k;
@@ -298,4 +298,4 @@ module.exports = {
     getBySlug (slug) {
         return talks[slug];
     }
-}
+};

@@ -6,10 +6,10 @@ function getIndex(req, res) {
     feedbacks.all()
         .then((feedbackList) => {
 
-            var talkList = talks.all();
-            var talkSlugs = talkList.map(t => t.slug);
-            var summaries = feedbackSummary(feedbackList, talkSlugs);
-            var feedbackCount = 0;
+            const talkList = talks.all();
+            const talkSlugs = talkList.map(t => t.slug);
+            const summaries = feedbackSummary(feedbackList, talkSlugs);
+            let feedbackCount = 0;
 
             talkList.forEach((talk) => {
                 talk.summary = summaries[talk.slug];
@@ -20,4 +20,4 @@ function getIndex(req, res) {
         })
 }
 
-module.exports = { getIndex }
+module.exports = { getIndex };

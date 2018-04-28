@@ -1,6 +1,6 @@
 function feedbackSummary(feedbacks, talkSlugs) {
-    var result = {};
-    var accumulators = {};
+    const result = {};
+    const accumulators = {};
 
     talkSlugs.forEach((slug) => {
         result[slug] = createTalkSummary();
@@ -14,7 +14,7 @@ function feedbackSummary(feedbacks, talkSlugs) {
 
         accumulators[feedback.talkSlug].rating += feedback.rating;
 
-        var summary = result[feedback.talkSlug];
+        const summary = result[feedback.talkSlug];
         summary.starCount[feedback.rating]++;
         summary.feedbackCount++;
         if (feedback.comment) {

@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser')
-const session = require('express-session')
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const ejs = require('ejs');
 const expressLayouts = require('express-ejs-layouts');
 const RedisStore = require('connect-redis')(session);
@@ -31,7 +31,7 @@ module.exports = () => {
 
     app.use(expressLayouts);
 
-    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(session({
         store: new RedisStore({
             url: config.infrastructure.redisURL
@@ -42,9 +42,9 @@ module.exports = () => {
         cookie: {
             maxAge: config.session.cookieMaxAge
         }
-    }))
+    }));
 
     routes(app);
 
     app.listen(config.host.port, config.host.address);
-}
+};
