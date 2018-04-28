@@ -11,6 +11,7 @@ const config = require('./config');
 module.exports = (app) => {
     app.use('/' , express.static(path.join(__dirname, '/favicons')));
     app.use('/static' , express.static(path.join(__dirname, '/static')));
+    app.use('/admin-new' , express.static(path.join(__dirname, '/admin/ui')));
 
     app.get('/', indexController.getIndex);
     app.get('/talk/:slug', talksController.getTalkById);

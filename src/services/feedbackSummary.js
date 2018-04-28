@@ -1,5 +1,4 @@
 function feedbackSummary(feedbacks, talkSlugs) {
-
     var result = {};
     var accumulators = {};
 
