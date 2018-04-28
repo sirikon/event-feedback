@@ -19,6 +19,7 @@ module.exports = {
         port: process.env.PORT || 8080
     },
     infrastructure: {
-        redisURL: process.env.REDIS_URL || 'redis://127.0.0.1:6379/'
+        redisURL: process.env.REDIS_URL || 'redis://127.0.0.1:6379/',
+        databaseURL: 'postgresql://postgres:12345@localhost/eventfeedback_dev'
     }
 }
