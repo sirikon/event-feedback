@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         userId: DataTypes.STRING,
         date: DataTypes.DATE
     }, {});
-    Feedback.associate = function(models) {
-    // associations can be defined here
-  };
-  return Feedback;
+    Feedback.associate = function (models) {
+        // associations can be defined here
+    };
+    return Feedback;
 };
