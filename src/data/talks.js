@@ -202,7 +202,7 @@ const talks = {
         track: '2',
         when: 'SAB 15:30-17:30'
     },
-    'òs-bus-factor': {
+    'os-bus-factor': {
         name: 'Open Space: Bus factor',
         description: '',
         speaker: 'Miguel González',
@@ -273,7 +273,7 @@ const talks = {
         Al contrario que la mayoría de Katas, ¡la solución ya existe! Sólo que tenemos que discutir como cambiarla.`,
         speaker: 'Elena Torró',
         speakerImage: 'elena.png',
-        speakerTitle: "Programadora. En mi tiempo libre intento sin éxito mantener un blog personal y arreglar el cuello de botella de mi lista de TODO's, entre otros. Actualmente trabajo como desarrolladora Front End en CARTO.",
+        speakerTitle: 'Programadora. En mi tiempo libre intento sin éxito mantener un blog personal y arreglar el cuello de botella de mi lista de TODO\'s, entre otros. Actualmente trabajo como desarrolladora Front End en CARTO.',
         track: '4',
         when: 'SAB 18:00-20:00'
     },
@@ -285,17 +285,17 @@ const talks = {
         track: '1',
         when: 'SAB 19:00-20:00'
     }
-}
+};
 
 Object.keys(talks).forEach((k) => {
     talks[k].slug = k;
 });
 
 module.exports = {
-    all () {
+    all() {
         return Object.keys(talks).map((id) => talks[id]);
     },
-    getBySlug (slug) {
+    getBySlug(slug) {
         return talks[slug];
     }
-}
+};

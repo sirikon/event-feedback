@@ -1,7 +1,7 @@
 const { Feedback } = require('./models/index');
 
 module.exports = {
-    create (talkSlug, feedback, ip, userId) {
+    create(talkSlug, feedback, ip, userId) {
         return Feedback.create({
             talkSlug,
             ip,
@@ -10,7 +10,7 @@ module.exports = {
             ...feedback
         });
     },
-    all () {
+    all() {
         return Feedback.findAll();
     }
-}
+};

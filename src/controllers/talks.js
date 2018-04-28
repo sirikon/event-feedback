@@ -2,7 +2,7 @@ const talks = require('../data/talks');
 const feedbacks = require('../data/feedbacks');
 
 function getTalkById(req, res) {
-    var talk = talks.getBySlug(req.params.slug);
+    let talk = talks.getBySlug(req.params.slug);
 
     if (!talk) {
         res.sendStatus(404);
@@ -13,16 +13,14 @@ function getTalkById(req, res) {
 }
 
 function validateFeedback(feedback) {
-    if (feedback.rating === NaN) {
+    if (isNaN(feedback.rating)) {
         return false;
     }
     if (feedback.rating < 1 || feedback.rating > 5) {
         return false;
     }
-    if (feedback.comment.length > 300) {
-        return false;
-    }
-    return true;
+    return feedback.comment.length <= 300;
+
 }
 
 function parseFeedback(body) {
@@ -33,21 +31,21 @@ function parseFeedback(body) {
 }
 
 function postFeedback(req, res) {
-    var talk = talks.getBySlug(req.params.slug);
+    const talk = talks.getBySlug(req.params.slug);
 
     if (!!req.session['feedbackReceived_' + req.params.slug]) {
         return res.render('pages/talk', { talk, feedbackReceived: true });
     }
 
-    var feedback = parseFeedback(req.body);
+    const feedback = parseFeedback(req.body);
     if (!validateFeedback(feedback)) {
         return res.sendStatus(400);
     }
 
-    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     feedbacks.create(req.params.slug, feedback, ip, req.session.id)
         .then(() => {
-            req.session['feedbackReceived_' + req.params.slug] = true
+            req.session['feedbackReceived_' + req.params.slug] = true;
             res.render('pages/talk', { talk, feedbackReceived: true });
         }, (err) => {
             console.log(err);
@@ -55,4 +53,4 @@ function postFeedback(req, res) {
         });
 }
 
-module.exports = { getTalkById, postFeedback }
+module.exports = { getTalkById, postFeedback };
