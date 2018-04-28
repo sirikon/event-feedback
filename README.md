@@ -1,4 +1,5 @@
 # Event Feedback #
+[![CircleCI](https://circleci.com/gh/Sirikon/event-feedback.svg?style=svg)](https://circleci.com/gh/Sirikon/event-feedback)
 
 Node.js web application for collecting user's feedback in an event.
 
